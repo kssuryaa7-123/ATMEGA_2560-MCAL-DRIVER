@@ -30,17 +30,17 @@ portable and maintainable application code on an 8-bit AVR platform.
 ## Folder Structure
 
 - GPIO_DRIVER/
-- |__inc/ # Driver headers
+- |____inc/ # Driver headers
 - |
-- |__inc/ # Driver headers
+- |____inc/ # Driver headers
 - |
-- |__src/ # Driver implementation
+- |____src/ # Driver implementation
 - |
-- |__examples/ # Usage examples
+- |____examples/ # Usage examples
 - |
-- |__LICENSE # License info
+- |____LICENSE # License info
 - |
-- |__GPIO_README.md # Documentation
+- |____GPIO_README.md # Documentation
               
 ---
 
