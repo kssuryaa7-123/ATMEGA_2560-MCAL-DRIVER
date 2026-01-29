@@ -96,5 +96,5 @@ Please give proper credit to **Jeya Suryaa Ks** if you use this work.
 ---
 
 ## Author
-**Jeya Suryaa Ks** 
-Embedded Systems | Bare-Metal Firmware | Driver Development
+Jeya Suryaa Ks 
+|Embedded Systems | Bare-Metal Firmware | Driver Development
