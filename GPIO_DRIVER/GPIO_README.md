@@ -30,12 +30,13 @@ portable and maintainable application code on an 8-bit AVR platform.
 ## Folder Structure
 
 - GPIO_DRIVER/
-- inc/ # Driver headers
-- src/ # Driver implementation
-- examples/ # Usage examples
-- LICENSE # License info
-- GPIO_README.md # Documentation                                              .
-
+- |__inc/ # Driver headers
+- |__inc/ # Driver headers
+- |__src/ # Driver implementation
+- |__examples/ # Usage examples
+- |__LICENSE # License info
+- |__GPIO_README.md # Documentation
+              
 ---
 
 ## GPIO HAL APIs
