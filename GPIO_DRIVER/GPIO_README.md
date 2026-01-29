@@ -31,10 +31,15 @@ portable and maintainable application code on an 8-bit AVR platform.
 
 - GPIO_DRIVER/
 - |__inc/ # Driver headers
+  |
 - |__inc/ # Driver headers
+  |
 - |__src/ # Driver implementation
+  |
 - |__examples/ # Usage examples
+  |
 - |__LICENSE # License info
+  |
 - |__GPIO_README.md # Documentation
               
 ---
