@@ -12,9 +12,6 @@ firmware development without relying on the Arduino framework.
 Each peripheral is implemented as an independent driver module with its
 own source files, examples, and dedicated documentation.
 
-- Note:
-  This GPIO driver configures pins using AVR memory-mapped Special Function Registers (DDRx, PORTx, PINx) and supports standard GPIO mode. Alternate peripheral functions (USART, SPI, I2C) are intentionally left to respective peripheral drivers.
-
 ---
 
 ## Key Features

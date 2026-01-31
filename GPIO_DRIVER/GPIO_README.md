@@ -9,6 +9,9 @@ The driver design is inspired by STM32 HAL concepts, providing clean,
 high-level APIs that abstract direct register access and promote
 portable and maintainable application code on an 8-bit AVR platform.
 
+- Note:
+  This GPIO driver configures pins using AVR memory-mapped Special Function Registers (DDRx, PORTx, PINx) and supports standard GPIO mode. Alternate peripheral functions (USART, SPI, I2C) are intentionally left to respective peripheral drivers.
+
 ---
 
 ## Key Highlights
