@@ -9,6 +9,9 @@ The driver design is inspired by STM32 HAL concepts, providing clean,
 high-level APIs that abstract direct register access and promote
 portable and maintainable application code on an 8-bit AVR platform.
 
+**Note**
+ This driver currently supports normal GPIO mode only. Special Function Registers (SFRs) for alternate functions, interrupts, or advanced pin configurations are not modified here. SFRs will be used in drivers for peripherals such as Timers, UART, and I2C.
+
 ---
 
 ## Key Highlights
