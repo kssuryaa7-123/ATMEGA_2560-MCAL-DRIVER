@@ -9,8 +9,8 @@ The driver design is inspired by STM32 HAL concepts, providing clean,
 high-level APIs that abstract direct register access and promote
 portable and maintainable application code on an 8-bit AVR platform.
 
-**Note**
- This driver currently supports normal GPIO mode only. Special Function Registers (SFRs) for alternate functions, interrupts, or advanced pin configurations are not modified here. SFRs will be used in drivers for peripherals such as Timers, UART, and I2C.
+- **Note:**
+   This driver currently supports normal GPIO mode only. Special Function Registers (SFRs) for alternate functions, interrupts, or advanced pin configurations are not modified here. SFRs will be used in drivers for peripherals such as Timers, UART, and I2C.
 
 ---
 
@@ -71,10 +71,10 @@ portable and maintainable application code on an 8-bit AVR platform.
 - `gpio_enable_pullup_port()`
 - `gpio_disable_pullup_port()`
 
-Note:
-Internal pull-up resistors are enabled by configuring the pin as
-input (DDR = 0) and setting the corresponding PORT bit, following
-AVR hardware specifications.pullup functions does this.
+- Note:
+  Internal pull-up resistors are enabled by configuring the pin as
+  input (DDR = 0) and setting the corresponding PORT bit, following
+  AVR hardware specifications.pullup functions does this.
 
 ---
 
