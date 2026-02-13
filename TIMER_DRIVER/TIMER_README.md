@@ -50,6 +50,8 @@ A complete working demonstration of the ATmega2560 Timer Driver
 
 [Download / Watch Demo Video](docs/demo.mp4)
 
+> ⚠️ Note: GitHub cannot play the video inline. Please use the link above to download and   watch the demo locally.
+
 ### What the demo covers:
 - Hardware-based blocking delay execution  
 - Interrupt-driven non-blocking periodic callback  
