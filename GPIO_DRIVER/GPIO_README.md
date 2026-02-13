@@ -41,8 +41,6 @@ portable and maintainable application code on an 8-bit AVR platform.
 - |
 - |____examples/ # Usage examples
 - |
-- |____LICENSE # License info
-- |
 - |____GPIO_README.md # Documentation
               
 ---
