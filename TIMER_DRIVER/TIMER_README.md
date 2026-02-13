@@ -48,8 +48,12 @@ layered architecture suitable for scalable embedded applications on
 A complete working demonstration of the ATmega2560 Timer Driver  
 (Blocking + Non-Blocking execution) is available below:
 
-▶️ **Watch Demo Video**  
-[Click here to play the demo](TIMER_DRIVER/TIMER Blocking & Non-Blocking driver/docs/demo.mp4)
+<video width="640" height="360" controls>
+  <source src="docs/demo.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+[Download / Watch Demo Video](docs/demo.mp4)
 
 ### What the demo covers:
 - Hardware-based blocking delay execution  
