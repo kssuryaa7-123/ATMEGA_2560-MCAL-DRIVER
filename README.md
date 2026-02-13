@@ -74,11 +74,11 @@ for internal pull-up resistors and clean HAL-style APIs.
 - Location: `GPIO_DRIVER/`  
 - Documentation: `GPIO_DRIVER/GPIO_README.md`
 
-- **Timer Driver**  
-  The Timer driver provides blocking and non-blocking delay functionality using Timer0, Timer1, and Timer3.  
-  Supports precise time control, partial cycles for long delays, and ISR-based callback execution.  
-  **Location:** `TIMER_DRIVER/`  
-  **Documentation:** `TIMER_DRIVER/TIMER_README.md`
+### Timer Driver  
+The Timer driver provides blocking and non-blocking delay functionality using Timer0, Timer1, and Timer3.  
+Supports precise time control, partial cycles for long delays, and ISR-based callback execution.  
+- Location: `TIMER_DRIVER/`  
+- Documentation: `TIMER_DRIVER/TIMER_README.md`
 
 ---
 
