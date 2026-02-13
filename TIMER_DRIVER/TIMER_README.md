@@ -112,7 +112,7 @@ learning purposes.
 
 
 ### Blocking Timer Example  
-#### Hardware Delay
+- #### Hardware Delay
 
 `blocking_delay.c`  
 → Generate a hardware-based blocking delay
@@ -121,17 +121,17 @@ learning purposes.
 
 ### Non-Blocking Timer Examples  
 
-#### Periodic Execution
+- #### Periodic Execution
 
 `periodic_led_toggle.c`  
 → Toggle an LED periodically using timer callback
 
-#### Runtime Control
+- #### Runtime Control
 
 `timer_start_stop.c`  
 → Start and stop a non-blocking timer dynamically during runtime
 
-#### Reinitialization & Callback Update
+- #### Reinitialization & Callback Update
 
 `timer_reinitialize_callback.c`  
 → Deinitialize the timer and reinitialize it with a new callback and timing configuration
