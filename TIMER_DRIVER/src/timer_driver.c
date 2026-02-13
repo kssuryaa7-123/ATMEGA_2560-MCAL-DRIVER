@@ -116,91 +116,109 @@ void timer_stop(timer_handle_t* h)
 /*==============================================================================
     Prescaler Configuration
 ==============================================================================*/
+
 void set_prescale(timer_handle_t* h)
 {
-  if (h-> type == TIMER_BLOCKING)
-  {
-    if ( h-> timer == TIMER0)
+    if (h->type == TIMER_BLOCKING)
     {
-       // CLEAR prescaler timer0 prescale bits and then set it
-      TCCR0B &= ~((1 << CS00) | (1 << CS01) | (1 << CS02));
+        /* ================= TIMER 0 ================= */
+        if (h->timer == TIMER0)
+        {
+            /* Clear prescaler bits */
+            TCCR0B &= ~((1 << CS00) | (1 << CS01) | (1 << CS02));
 
-      if (h-> prescaler == PRESCALER_1) //check if system clock..
-      {
-        TCCR0B |= ((1 << CS00));// just set cs00 bit for system clock..
-      }
-      else if (h-> prescaler == PRESCALER_8) //checks if prescaler set 8..
-      {
-        TCCR0B |= ((1 << CS01)); // just set the cs01 bit for prescale 8..
-      }
-      else if (h-> prescaler == PRESCALER_64) //checks if prescaler set 64..
-      {
-        TCCR0B |= ((1 << CS00) | (1 << CS01)); // just set the cs00 & cs01 bit for prescale 8..
-      }
-      else if (h-> prescaler == PRESCALER_256) //checks if prescaler set 256..
-      {
-        TCCR0B |= ((1 << CS02)); // just set the cs02 bit for prescale 256..
-      }
-      else //(ctc_handle.prescaler == PRESCALER_1024)//checks if prescaler set 1024..
-      {
-        TCCR0B |= ((1 << CS00) | (1 << CS02)); // just set the cs00 & cs02 bit for prescale 1024...
-      }
+            switch (h->prescaler)
+            {
+                case PRESCALER_1:
+                    TCCR0B |= (1 << CS00);
+                    break;
+
+                case PRESCALER_8:
+                    TCCR0B |= (1 << CS01);
+                    break;
+
+                case PRESCALER_64:
+                    TCCR0B |= (1 << CS00) | (1 << CS01);
+                    break;
+
+                case PRESCALER_256:
+                    TCCR0B |= (1 << CS02);
+                    break;
+
+                case PRESCALER_1024:
+                    TCCR0B |= (1 << CS00) | (1 << CS02);
+                    break;
+
+                default:
+                    /* Invalid prescaler - optional error handling */
+                    break;
+            }
+        }
+
+        /* ================= TIMER 1 ================= */
+        else
+        {
+            TCCR1B &= ~((1 << CS10) | (1 << CS11) | (1 << CS12));
+
+            switch (h->prescaler)
+            {
+                case PRESCALER_1:
+                    TCCR1B |= (1 << CS10);
+                    break;
+
+                case PRESCALER_8:
+                    TCCR1B |= (1 << CS11);
+                    break;
+
+                case PRESCALER_64:
+                    TCCR1B |= (1 << CS10) | (1 << CS11);
+                    break;
+
+                case PRESCALER_256:
+                    TCCR1B |= (1 << CS12);
+                    break;
+
+                case PRESCALER_1024:
+                    TCCR1B |= (1 << CS10) | (1 << CS12);
+                    break;
+
+                default:
+                    break;
+            }
+        }
     }
 
-    else//if timer 1
+    /* ================= TIMER 3 (NON-BLOCKING) ================= */
+    else
     {
-      // CLEAR prescaler bits of timer 1 and then set it 
-      TCCR1B &= ~((1 << CS10) | (1 << CS11) | (1 << CS12));
+        TCCR3B &= ~((1 << CS30) | (1 << CS31) | (1 << CS32));
 
-      if (h-> prescaler == PRESCALER_1) //check if system clock..
-      {
-        TCCR1B |= ((1 << CS10));// just set cs10 bit for system clock..
-      }
-      else if (h-> prescaler == PRESCALER_8) //checks if prescaler set 8..
-      {
-        TCCR1B |= ((1 << CS11)); // just set the cs11 bit for prescale 8..
-      }
-      else if (h-> prescaler == PRESCALER_64) //checks if prescaler set 64..
-      {
-        TCCR1B |= ((1 << CS10) | (1 << CS11)); // just set the cs10 & cs11 bit for prescale 8..
-      }
-      else if (h-> prescaler == PRESCALER_256) //checks if prescaler set 256..
-      {
-        TCCR1B |= ((1 << CS12)); // just set the cs02 bit for prescale 256..
-      }
-      else //(ctc_handle.prescaler == PRESCALER_1024)//checks if prescaler set 1024..
-      {
-        TCCR1B |= ((1 << CS10) | (1 << CS12)); // just set the cs10 & cs12 bit for prescale 1024...
-      }
-    }
-  }
+        switch (h->prescaler)
+        {
+            case PRESCALER_1:
+                TCCR3B |= (1 << CS30);
+                break;
 
-  else //non blocking delay set timer 3
-  {
-    /// CLEAR prescaler bits of timer 3 and set it
-    TCCR3B &= ~((1 << CS30) | (1 << CS31) | (1 << CS32));
-    
-    if (h-> prescaler == PRESCALER_1) //check if system clock..
-    {
-      TCCR3B |= ((1 << CS30));// just set cs30 bit for system clock..
+            case PRESCALER_8:
+                TCCR3B |= (1 << CS31);
+                break;
+
+            case PRESCALER_64:
+                TCCR3B |= (1 << CS30) | (1 << CS31);
+                break;
+
+            case PRESCALER_256:
+                TCCR3B |= (1 << CS32);
+                break;
+
+            case PRESCALER_1024:
+                TCCR3B |= (1 << CS30) | (1 << CS32);
+                break;
+
+            default:
+                break;
+        }
     }
-    else if (h-> prescaler == PRESCALER_8) //checks if prescaler set 8..
-    {
-      TCCR3B |= ((1 << CS31)); // just set the cs31 bit for prescale 8..
-    }
-    else if (h-> prescaler == PRESCALER_64) //checks if prescaler set 64..
-    {
-      TCCR3B |= ((1 << CS30) | (1 << CS31)); // just set the cs30 & cs31 bit for prescale 8..
-    }
-    else if (h-> prescaler == PRESCALER_256) //checks if prescaler set 256..
-    {
-      TCCR3B |= ((1 << CS32)); // just set the c32 bit for prescale 256..
-    }
-    else //(ctc_handle.prescaler == PRESCALER_1024)//checks if prescaler set 1024..
-    {
-      TCCR3B |= ((1 << CS30) | (1 << CS32)); // just set the cs30 & cs32 bit for prescale 1024...
-    }
-  }
 }
 
 
@@ -319,7 +337,7 @@ void set_prescale(timer_handle_t* h)
     {
       if (h-> timer == TIMER0)
       {
-        OCR0A = h-> ocr_value8; // map the calculayted 8 bit value to the ocr register..
+        OCR0A = h-> ocr_value8; // map the calculated 8 bit value to the ocr register..
       }
       else// if (ctc_handle.timer == TIMER1) //if timer1 CHOOSED
       {
@@ -380,7 +398,6 @@ void set_prescale(timer_handle_t* h)
     }
     TIFR1 |= (1 << OCF1A); //clear the 8 bit flag bit after it set...
     timer_stop(h);// then stop the timer..
-    //Serial.println("successfully delayed");
   }
 
 
@@ -418,7 +435,6 @@ void set_prescale(timer_handle_t* h)
         }
         //this block runs the partial value to load in the overflow.
         handle_partial_cycles_timer1(h);
-        //Serial.println("successfully delayed");
       }
 
       else

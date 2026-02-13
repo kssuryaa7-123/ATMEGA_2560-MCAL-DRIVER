@@ -44,8 +44,8 @@ typedef enum
 typedef enum
 {
   TIMER0 = 0U, //for blocking delay
-  TIMER1 = 1, //for blocking delay
-  TIMER3 = 3 //FOR NON BLOCKING DELAY
+  TIMER1 = 1U, //for blocking delay
+  TIMER3 = 3U //FOR NON BLOCKING DELAY
 } timer_identify_t;
 
 
@@ -54,7 +54,7 @@ typedef enum
 //============================
 typedef enum
 {
-  PRESCALER_0 = 0U,
+  PRESCALER_NONE = 0U,
   PRESCALER_1 = 1U,
   PRESCALER_8 = 8U,
   PRESCALER_64 = 64U,

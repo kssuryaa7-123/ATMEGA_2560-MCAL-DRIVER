@@ -25,11 +25,11 @@ timer_handle_t non_block_handle;
 //==================================================
 // Internal Helper Function Prototypes...
 //==================================================
-static void     select_timer(timer_handle_t *h, uint32_t value_us);
-static void     select_prescalar_val(timer_handle_t *h, uint32_t value_us);
-static float    total_ticks(timer_handle_t *h, uint32_t value_us);
-static uint32_t converted_ticks(timer_handle_t *h, float ticks);
-static void     calc_ocr_value_and_cycle(timer_handle_t *h, uint32_t ticks);
+void     select_timer(timer_handle_t *h, uint32_t value_us);
+void     select_prescalar_val(timer_handle_t *h, uint32_t value_us);
+float    total_ticks(timer_handle_t *h, uint32_t value_us);
+uint32_t converted_ticks(timer_handle_t *h, float ticks);
+void     calc_ocr_value_and_cycle(timer_handle_t *h, uint32_t ticks);
 
 
 //----------------------------------------------------------
@@ -62,7 +62,7 @@ uint32_t time_to_microsec(uint32_t value, time_unit_t unit)
  * Input    : h        - Timer handle pointer
  *            value_us - Time in microseconds
  *----------------------------------------------------------*/
-static void select_timer(timer_handle_t *h, uint32_t value_us)
+void select_timer(timer_handle_t *h, uint32_t value_us)
 {
     if (h->type == TIMER_BLOCKING)
     {
@@ -88,7 +88,7 @@ static void select_timer(timer_handle_t *h, uint32_t value_us)
  * Input    : h        - Timer handle pointer
  *            value_us - Time in microseconds
  *----------------------------------------------------------*/
-static void select_prescalar_val(timer_handle_t *h, uint32_t value_us)
+void select_prescalar_val(timer_handle_t *h, uint32_t value_us)
 {
     if (h->type == TIMER_BLOCKING)
     {
@@ -142,7 +142,7 @@ static void select_prescalar_val(timer_handle_t *h, uint32_t value_us)
  *            value_us - Time in microseconds
  * Return   : Total ticks as floating-point value
  *----------------------------------------------------------*/
-static float total_ticks(timer_handle_t *h, uint32_t value_us)
+float total_ticks(timer_handle_t *h, uint32_t value_us)
 {
     /* F_CPU = 16 MHz → 16 ticks per microsecond */
     return ((value_us * 16.0f) / h->prescaler);
@@ -156,7 +156,7 @@ static float total_ticks(timer_handle_t *h, uint32_t value_us)
  *            ticks - Calculated tick value
  * Return   : Rounded / ceiled tick count
  *----------------------------------------------------------*/
-static uint32_t converted_ticks(timer_handle_t *h, float ticks)
+uint32_t converted_ticks(timer_handle_t *h, float ticks)
 {
     if (h->type == TIMER_BLOCKING)
     {
@@ -182,7 +182,7 @@ static uint32_t converted_ticks(timer_handle_t *h, float ticks)
  * Input    : h     - Timer handle pointer
  *            ticks - Total tick count
  *----------------------------------------------------------*/
-static void calc_ocr_value_and_cycle(timer_handle_t *h, uint32_t ticks)
+void calc_ocr_value_and_cycle(timer_handle_t *h, uint32_t ticks)
 {
     if (h->type == TIMER_BLOCKING)
     {
@@ -306,7 +306,7 @@ void timer_non_block_handle_config(timer_handle_t *h, uint32_t value_us)
 void timer_non_block_handle_reset(timer_handle_t *h)
 {
     h->timer          = TIMER3;
-    h->prescaler      = PRESCALER_0;
+    h->prescaler      = PRESCALER_NONE;
     h->cycles         = 0U;
     h->partial_cycle  = 0U;
     h->ocr_value16    = 0U;
