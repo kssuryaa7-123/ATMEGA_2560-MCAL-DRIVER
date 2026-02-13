@@ -36,14 +36,22 @@ own source files, examples, and dedicated documentation.
 Each peripheral is placed in its **own folder**, following a consistent
 and reusable structure.
 
- ATMEGA2560_MCAL_DRIVERS/
+
+- ATMEGA2560_MCAL_DRIVERS/
 - │
 - ├── gpio_driver/
-- │ ├── inc/ # GPIO driver header files
-- │ ├── src/ # GPIO driver source files
-- │ ├── examples/ # GPIO usage examples
-- │ ├── GPIO_README.md
+- │ ├── inc/           # GPIO driver header files
+- │ ├── src/           # GPIO driver source files
+- │ ├── examples/      # GPIO usage examples
+- │ ├── GPIO_README.md # Documentation
 - │
+- ├── timer_driver/
+- │ ├── inc/             # Timer driver header files
+- │ ├── src/             # Timer driver source files 
+- │ ├── examples/        # Timer usage examples
+- │ ├── TIMER_README.md  # Documentation 
+- │ ├── docs/            # Design & implementation documentation
+- |
 - ├── LICENSE
 - └── README.md # This file
 
@@ -63,8 +71,14 @@ and reusable structure.
 The GPIO driver provides pin-level and port-level control with support
 for internal pull-up resistors and clean HAL-style APIs.
 
-- Location: `gpio_driver/`  
-- Documentation: `gpio_driver/GPIO_README.md`
+- Location: `GPIO_DRIVER/`  
+- Documentation: `GPIO_DRIVER/GPIO_README.md`
+
+- **Timer Driver**  
+  The Timer driver provides blocking and non-blocking delay functionality using Timer0, Timer1, and Timer3.  
+  Supports precise time control, partial cycles for long delays, and ISR-based callback execution.  
+  **Location:** `TIMER_DRIVER/`  
+  **Documentation:** `TIMER_DRIVER/TIMER_README.md`
 
 ---
 
